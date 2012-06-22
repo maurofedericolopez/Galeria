@@ -2,11 +2,9 @@ package explorador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
@@ -14,7 +12,7 @@ import javax.swing.tree.TreeSelectionModel;
  *
  * @author matiasgel
  */
-public final class SimpleTree extends JPanel implements TreeSelectionListener {
+public final class SimpleTree {
 
     JTree tree;
     DefaultMutableTreeNode root;

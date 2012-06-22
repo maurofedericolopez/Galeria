@@ -31,7 +31,7 @@ public class Explorer extends javax.swing.JFrame {
         jlDisplay = new javax.swing.JLabel();
         jbMostrarImagen = new javax.swing.JButton();
         jsp = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jlLista = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +42,7 @@ public class Explorer extends javax.swing.JFrame {
             }
         });
 
-        jsp.setViewportView(jList1);
+        jsp.setViewportView(jlLista);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,9 +125,9 @@ public class Explorer extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList jList1;
     private javax.swing.JButton jbMostrarImagen;
     private javax.swing.JLabel jlDisplay;
+    private javax.swing.JList jlLista;
     private javax.swing.JScrollPane jsp;
     // End of variables declaration//GEN-END:variables
 }
