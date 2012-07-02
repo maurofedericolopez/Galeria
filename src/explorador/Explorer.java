@@ -30,8 +30,6 @@ public class Explorer extends javax.swing.JFrame {
 
         jlDisplay = new javax.swing.JLabel();
         jbMostrarImagen = new javax.swing.JButton();
-        jsp = new javax.swing.JScrollPane();
-        jlLista = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,8 +40,6 @@ public class Explorer extends javax.swing.JFrame {
             }
         });
 
-        jsp.setViewportView(jlLista);
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,27 +47,22 @@ public class Explorer extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(33, 33, 33)
-                        .add(jbMostrarImagen))
+                        .add(311, 311, 311)
+                        .add(jlDisplay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jsp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 165, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jlDisplay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                        .add(100, 100, 100)
+                        .add(jbMostrarImagen)
+                        .add(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(25, 25, 25)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(jsp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 328, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(jbMostrarImagen)
-                        .add(0, 57, Short.MAX_VALUE))
-                    .add(jlDisplay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap()
+                .add(jlDisplay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 454, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(jbMostrarImagen)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,7 +118,5 @@ public class Explorer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbMostrarImagen;
     private javax.swing.JLabel jlDisplay;
-    private javax.swing.JList jlLista;
-    private javax.swing.JScrollPane jsp;
     // End of variables declaration//GEN-END:variables
 }

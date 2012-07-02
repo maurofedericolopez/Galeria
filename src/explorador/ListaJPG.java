@@ -1,25 +1,49 @@
 package explorador;
 
-import java.awt.BorderLayout;
 import java.io.File;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
-import javax.swing.ListSelectionModel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeSelectionModel;
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author Mauro Federico Lopez
  */
-public class ListaJPG extends JList {
-
-    private File imagenes = new File("src\\Imagenes");
-    private JTree tree;
-    private DefaultMutableTreeNode root;
+public class ListaJPG extends JPanel
+                      implements ListSelectionListener {
+    private JList lista;
+    private DefaultListModel listModel;
+    private static File directorio = new File("src\\Imagenes");
 
     public ListaJPG() {
-        this.getSelectionModel().setSelectionModel(ListSelectionModel.SINGLE_SELECTION);
+
+        String[] s = getList();
+        listModel = new DefaultListModel();
+        for (int i = 0;i < s.length;i++)
+            listModel.addElement(s[i]);
+
+        //Create the list and put it in a scroll pane.
+        lista = new JList(listModel);
+        lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lista.setSelectedIndex(0);
+        lista.addListSelectionListener(this);
+        lista.setVisibleRowCount(5);
+        JScrollPane listScrollPane = new JScrollPane(lista);
+
+        add(listScrollPane);
+    }
+
+    public String[] getList() {
+        if(directorio.exists()) {
+            String[] s = directorio.list();
+            return s;
+        }
+        else
+            return null;
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
