@@ -9,14 +9,21 @@ package explorador;
 
 public class Explorer extends javax.swing.JFrame {
 
-    private String pathImagen;
+    private Controlador controlador;
 
     /**
      * Creates new form explorer
      */
     public Explorer() {
         initComponents();
-        jbMostrarImagen.setEnabled(false);
+        setEnabledMostrar(false);
+        jlLista.setModel(new ListaModel());
+        controlador = new Controlador(this);
+        jlLista.getSelectionModel().addListSelectionListener(new ListaListener(getJlLista(), getControlador()));
+    }
+
+    public void setEnabledMostrar(Boolean valor) {
+        getJbMostrarImagen().setEnabled(valor);
     }
 
     /**
@@ -28,8 +35,12 @@ public class Explorer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jlDisplay = new javax.swing.JLabel();
         jbMostrarImagen = new javax.swing.JButton();
+        jpDisplay = new javax.swing.JPanel();
+        jlDisplay = new javax.swing.JLabel();
+        jpLista = new javax.swing.JPanel();
+        jsp = new javax.swing.JScrollPane();
+        jlLista = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,26 +51,71 @@ public class Explorer extends javax.swing.JFrame {
             }
         });
 
+        jlDisplay.setBackground(new java.awt.Color(255, 0, 51));
+        jlDisplay.setForeground(new java.awt.Color(255, 255, 255));
+
+        org.jdesktop.layout.GroupLayout jpDisplayLayout = new org.jdesktop.layout.GroupLayout(jpDisplay);
+        jpDisplay.setLayout(jpDisplayLayout);
+        jpDisplayLayout.setHorizontalGroup(
+            jpDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jpDisplayLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jlDisplay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jpDisplayLayout.setVerticalGroup(
+            jpDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jpDisplayLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jlDisplay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jlLista.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jlLista.setToolTipText("");
+        jsp.setViewportView(jlLista);
+
+        org.jdesktop.layout.GroupLayout jpListaLayout = new org.jdesktop.layout.GroupLayout(jpLista);
+        jpLista.setLayout(jpListaLayout);
+        jpListaLayout.setHorizontalGroup(
+            jpListaLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jpListaLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jsp, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jpListaLayout.setVerticalGroup(
+            jpListaLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jpListaLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jsp, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(311, 311, 311)
-                        .add(jlDisplay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE))
-                    .add(layout.createSequentialGroup()
-                        .add(100, 100, 100)
+                        .add(jpDisplay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jpLista, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(0, 0, Short.MAX_VALUE)
                         .add(jbMostrarImagen)
-                        .add(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .add(85, 85, 85))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jlDisplay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 454, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jpLista, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jpDisplay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(18, 18, 18)
                 .add(jbMostrarImagen)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -69,8 +125,7 @@ public class Explorer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbMostrarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarImagenActionPerformed
-        //pathImagen = simpleTree;
-        //jlDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImagen)); // NOI18N
+        getControlador().mostrarImagen();
     }//GEN-LAST:event_jbMostrarImagenActionPerformed
 
     /**
@@ -118,5 +173,65 @@ public class Explorer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbMostrarImagen;
     private javax.swing.JLabel jlDisplay;
+    private javax.swing.JList jlLista;
+    private javax.swing.JPanel jpDisplay;
+    private javax.swing.JPanel jpLista;
+    private javax.swing.JScrollPane jsp;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the controlador
+     */
+    public Controlador getControlador() {
+        return controlador;
+    }
+
+    /**
+     * @param controlador the controlador to set
+     */
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
+    }
+
+    /**
+     * @return the jbMostrarImagen
+     */
+    public javax.swing.JButton getJbMostrarImagen() {
+        return jbMostrarImagen;
+    }
+
+    /**
+     * @param jbMostrarImagen the jbMostrarImagen to set
+     */
+    public void setJbMostrarImagen(javax.swing.JButton jbMostrarImagen) {
+        this.jbMostrarImagen = jbMostrarImagen;
+    }
+
+    /**
+     * @return the jlDisplay
+     */
+    public javax.swing.JLabel getJlDisplay() {
+        return jlDisplay;
+    }
+
+    /**
+     * @param jlDisplay the jlDisplay to set
+     */
+    public void setJlDisplay(javax.swing.JLabel jlDisplay) {
+        this.jlDisplay = jlDisplay;
+    }
+
+    /**
+     * @return the jlLista
+     */
+    public javax.swing.JList getJlLista() {
+        return jlLista;
+    }
+
+    /**
+     * @param jlLista the jlLista to set
+     */
+    public void setJlLista(javax.swing.JList jlLista) {
+        this.jlLista = jlLista;
+    }
 }
