@@ -25,11 +25,4 @@ public class ListaModel extends AbstractListModel {
     public Object getElementAt(int index) {
         return path[index];
     }
-
-    /**
-     * @return the dir
-     */
-    public Directorio getDir() {
-        return dir;
-    }
 }

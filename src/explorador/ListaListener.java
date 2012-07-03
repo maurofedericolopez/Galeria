@@ -14,20 +14,14 @@ public class ListaListener implements ListSelectionListener {
     private int rowSelected = -1;
     private Controlador controlador;
 
-    public ListaListener(JList lista, Controlador controlador) {
+    public ListaListener(JList lista) {
         this.lista = lista;
-        this.controlador = controlador;
     }
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        if(rowSelected == -1) {
-            controlador.setChanged();
-        }
-        if ( this.getRowSelected() != lista.getSelectedIndex() && lista.getSelectedIndex()>=0) { 
-            System.out.println(lista.getSelectedIndex());
+        if ( this.getRowSelected() != lista.getSelectedIndex() && lista.getSelectedIndex()>=0) {
             this.rowSelected = lista.getSelectedIndex();
-            controlador.setRow(rowSelected);
         }
     }
 

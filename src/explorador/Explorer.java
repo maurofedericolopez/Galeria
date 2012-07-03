@@ -16,14 +16,9 @@ public class Explorer extends javax.swing.JFrame {
      */
     public Explorer() {
         initComponents();
-        setEnabledMostrar(false);
         jlLista.setModel(new ListaModel());
         controlador = new Controlador(this);
-        jlLista.getSelectionModel().addListSelectionListener(new ListaListener(getJlLista(), getControlador()));
-    }
-
-    public void setEnabledMostrar(Boolean valor) {
-        getJbMostrarImagen().setEnabled(valor);
+        jlLista.getSelectionModel().addListSelectionListener(new ListaListener(getJlLista()));
     }
 
     /**
